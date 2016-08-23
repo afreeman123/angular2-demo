@@ -27,7 +27,7 @@ var HeroService = (function () {
         return Promise.reject(error.message || error);
     };
     HeroService.prototype.post = function (hero) {
-        var headers = new Headers({
+        var headers = new http_1.Headers({
             'Content-Type': 'application/json'
         });
         return this.http
@@ -38,7 +38,7 @@ var HeroService = (function () {
     };
     // Update existing Hero
     HeroService.prototype.put = function (hero) {
-        var headers = new Headers();
+        var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         var url = this.heroesUrl + "/" + hero.id;
         return this.http
@@ -48,7 +48,7 @@ var HeroService = (function () {
             .catch(this.handleError);
     };
     HeroService.prototype.delete = function (hero) {
-        var headers = new Headers();
+        var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         var url = this.heroesUrl + "/" + hero.id;
         return this.http

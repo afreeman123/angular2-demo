@@ -18,6 +18,10 @@ var appRoutes = [
         component: hero_detail_component_1.HeroDetailComponent
     },
     {
+        path: 'detail',
+        component: hero_detail_component_1.HeroDetailComponent
+    },
+    {
         path: 'heroes',
         component: heroes_component_1.HeroesComponent
     }

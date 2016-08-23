@@ -13,7 +13,8 @@ var router_1 = require('@angular/router');
 var hero_1 = require('./hero');
 var hero_service_1 = require('./hero.service');
 var HeroDetailComponent = (function () {
-    function HeroDetailComponent(heroService, route) {
+    function HeroDetailComponent(router, heroService, route) {
+        this.router = router;
         this.heroService = heroService;
         this.route = route;
         this.close = new core_1.EventEmitter();
@@ -39,7 +40,13 @@ var HeroDetailComponent = (function () {
             .save(this.hero)
             .then(function (hero) {
             _this.hero = hero;
-            _this.goBack(hero);
+            if (_this.route.snapshot.url[0].path == 'detail') {
+                var link = ['/detail', _this.hero.id];
+                _this.router.navigate(link);
+            }
+            else {
+                _this.goBack(hero);
+            }
         })
             .catch(function (error) { return _this.error = error; });
     };
@@ -64,7 +71,7 @@ var HeroDetailComponent = (function () {
             styleUrls: ['app/hero-detail.component.css'],
             templateUrl: 'app/hero.component.html'
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService, router_1.ActivatedRoute])
     ], HeroDetailComponent);
     return HeroDetailComponent;
 }());

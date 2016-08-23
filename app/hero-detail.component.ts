@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
@@ -17,6 +17,7 @@ export class HeroDetailComponent implements OnInit{
   navigated = false;
 
   constructor (
+    private router: Router,
     private heroService: HeroService,
     private route: ActivatedRoute
   ) { }
@@ -39,9 +40,16 @@ export class HeroDetailComponent implements OnInit{
       .save(this.hero)
       .then(hero => {
         this.hero = hero;
-        this.goBack(hero);
+
+        if(this.route.snapshot.url[0].path == 'detail') {
+          let link = ['/detail', this.hero.id];
+          this.router.navigate(link);
+        } else {
+          this.goBack(hero);
+        }
       })
       .catch(error => this.error = error);
+
   }
 
   goBack(savedHero: Hero = null) {

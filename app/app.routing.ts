@@ -19,6 +19,10 @@ const appRoutes: Routes = [
     component: HeroDetailComponent
   },
   {
+    path: 'detail',
+    component: HeroDetailComponent
+  },
+  {
     path: 'heroes',
     component: HeroesComponent
   }

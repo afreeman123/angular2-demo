@@ -2,8 +2,20 @@
   <h2>{{hero.name}} details!</h2>
   <div><label>id: </label>{{hero.id}}</div>
   <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name"/>
+    <label>first name: </label>
+    <input [(ngModel)]="hero.name" placeholder="first name"/>
+  </div>
+  <div>
+    <label>surname: </label>
+    <input [(ngModel)]="hero.surname" placeholder="surname"/>
+  </div>
+  <div>
+    <label>address: </label>
+    <textarea [(ngModel)]="hero.address"></textarea>
+  </div>
+  <div>
+    <label>email: </label>
+    <input [(ngModel)]="hero.email" placeholder="email"/>
   </div>
   <button (click)="save()">Save</button>
 
