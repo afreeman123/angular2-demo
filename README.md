@@ -1,4 +1,7 @@
 My Angular 2 Demo
 
 1.  npm install
-2.  npm start
+2.  cd client
+3.  npm install
+4.  cd ..
+5.  npm start
